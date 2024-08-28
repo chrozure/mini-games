@@ -21,17 +21,18 @@ Inspired from day 19 of 100 days of code
 """
 
 from turtle import Turtle, Screen
+from commands import *
 
 FONT = ("Helvetica", 16, "normal")
 COLOURS = [('black', 'b'), ('blue', 'l'), ('green', 'g'), ('purple', 'p'), ('red', 'r'), ('yellow', 'y')]
 
 screen = Screen()
+screen.setup(width=960, height=675)
 FAR_RIGHT = screen.window_width() // 2
 BOTTOM = -screen.window_height() // 2
 screen.title("Etch-A-Sketch")
 
 t = Turtle()
-speed = 10
 
 
 def show_controls():
@@ -70,7 +71,7 @@ def show_controls():
         guide.left(90)
         guide.backward(15)
 
-    guide.forward(60)
+    guide.forward(65)
     guide.left(90)
     guide.forward(10 * num_colours)
     guide.right(90)
@@ -87,93 +88,25 @@ def show_controls():
         guide.backward(15)
 
 
-# Turtle functionality
-def move_forward():
-    t.forward(speed)
-
-
-def move_backward():
-    t.backward(speed)
-
-
-def turn_counter_clockwise():
-    t.left(10)
-
-
-def turn_clockwise():
-    t.right(10)
-
-
-def clear():
-    t.clear()
-    t.penup()
-    t.home()
-    t.setheading(0)
-    t.pendown()
-
-
-def make_pen_thick():
-    t.turtlesize(2, 2)
-    t.pensize(10)
-
-
-def make_pen_thin():
-    t.turtlesize(1, 1)
-    t.pensize(1)
-
-
-def teleport():
-    x = screen.numinput("Teleport", f"x co-ordinate ({-FAR_RIGHT} to {FAR_RIGHT}): ")
-    if x:
-        y = screen.numinput("Teleport", f"y co-ordinate ({BOTTOM} to {BOTTOM}):")
-        t.penup()
-        t.goto(x, y)
-        t.pendown()
-    screen.listen()
-
-
-def black():
-    t.color('black')
-
-
-def blue():
-    t.color('blue')
-
-
-def green():
-    t.color('green')
-
-
-def red():
-    t.color('red')
-
-
-def purple():
-    t.color('purple')
-
-
-def yellow():
-    t.color('yellow')
-
-
 show_controls()
 screen.listen()
-screen.onkey(key='w', fun=move_forward)
-screen.onkey(key='Up', fun=move_forward)
-screen.onkey(key='s', fun=move_backward)
-screen.onkey(key="Down", fun=move_backward)
-screen.onkey(key='a', fun=turn_counter_clockwise)
-screen.onkey(key="Left", fun=turn_counter_clockwise)
-screen.onkey(key='d', fun=turn_clockwise)
-screen.onkey(key="Right", fun=turn_clockwise)
-screen.onkey(key='c', fun=clear)
-screen.onkey(key='q', fun=make_pen_thin)
-screen.onkey(key='e', fun=make_pen_thick)
-screen.onkey(key='t', fun=teleport)
-screen.onkey(key='b', fun=black)
-screen.onkey(key='l', fun=blue)
-screen.onkey(key='r', fun=red)
-screen.onkey(key='p', fun=purple)
-screen.onkey(key='y', fun=yellow)
+screen.onkey(key='w', fun=lambda: move_forward(t))
+screen.onkey(key='Up', fun=lambda: move_forward(t))
+screen.onkey(key='s', fun=lambda: move_backward(t))
+screen.onkey(key="Down", fun=lambda: move_backward(t))
+screen.onkey(key='a', fun=lambda: turn_counter_clockwise(t))
+screen.onkey(key="Left", fun=lambda: turn_counter_clockwise(t))
+screen.onkey(key='d', fun=lambda: turn_clockwise(t))
+screen.onkey(key="Right", fun=lambda: turn_clockwise(t))
+screen.onkey(key='c', fun=lambda: clear(t))
+screen.onkey(key='q', fun=lambda: make_pen_thin(t))
+screen.onkey(key='e', fun=lambda: make_pen_thick(t))
+screen.onkey(key='t', fun=lambda: teleport(t, screen))
+screen.onkey(key='b', fun=lambda: black(t))
+screen.onkey(key='l', fun=lambda: blue(t))
+screen.onkey(key='g', fun=lambda: green(t))
+screen.onkey(key='p', fun=lambda: purple(t))
+screen.onkey(key='r', fun=lambda: red(t))
+screen.onkey(key='y', fun=lambda: yellow(t))
 
 screen.exitonclick()
