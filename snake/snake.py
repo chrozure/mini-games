@@ -59,3 +59,9 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
+    def touches(self, x, y):
+        for segment in self.segments:
+            if segment.distance(x, y) < 10:
+                return True
+
+        return False

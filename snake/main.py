@@ -23,7 +23,7 @@ screen.title("Snake")
 screen.tracer(0)
 
 snake = Snake()
-food = Food()
+food = Food(snake)
 scoreboard = Scoreboard()
 screen.update()
 screen.listen()
@@ -45,14 +45,13 @@ while game_is_on:
 
     # detect collision with food
     if snake.head.distance(food) < 15:
-        food.refresh()
+        food.refresh(snake)
         snake.extend()
         scoreboard.increment_score()
 
     # Detect collision with wall
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
         game_is_on = False
-        print(snake.head.xcor(), snake.head.ycor())
         scoreboard.game_over()
 
     # Detect collision with tail
