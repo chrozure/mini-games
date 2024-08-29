@@ -1,6 +1,7 @@
 """
 snake.py
-Contains the Snake class
+
+Contains the implementation of the Snake class
 """
 from turtle import Turtle
 

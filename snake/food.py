@@ -2,6 +2,7 @@
 food.py
 Contains the implementation of the Food class
 
+The food gets randomly generated onto a spot on the screen.
 """
 
 from turtle import Turtle

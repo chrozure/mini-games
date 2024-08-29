@@ -1,6 +1,9 @@
 """
 scoreboard.py
-Keeps track of the player's score and displays it at the top of the screen
+Implementation of the snake game's scoreboard
+
+Keeps track of the player's score and displays it at the top of the screen.
+Also displays game over text once the game has finished.
 """
 
 from turtle import Turtle

@@ -2,9 +2,12 @@
 main.py
 Driver code for the snake game
 
+You can use WASD or the arrow keys to control the snake.
+The game ends once the snake reaches the wall or its own tail.
 
+Once the game is over, click anywhere on the screen to exit.
 
-Inspired by day 20 and 21 of 100 days of code
+Inspired by days 20 and 21 of 100 days of code
 """
 from food import Food
 from scoreboard import Scoreboard
