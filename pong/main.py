@@ -10,10 +10,11 @@ You can quit the game by closing the window.
 
 Inspired by day 22 of 100 days of code
 """
-from turtle import Screen
-from paddle import Paddle
 from ball import Ball
+from line import Line
+from paddle import Paddle
 from scoreboard import Scoreboard
+from turtle import Screen
 import time
 
 # set up screen
@@ -22,6 +23,7 @@ screen.setup(width=800, height=600)
 screen.bgcolor('black')
 screen.title("Pong")
 screen.tracer(0)
+Line()
 
 # create objects
 r_paddle = Paddle((350, 0))

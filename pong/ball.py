@@ -32,11 +32,11 @@ class Ball(Turtle):
 
     def left_paddle_bounce(self):
         self.move_speed *= 0.95
-        self.dx = 10 + random.randint(-3, 3)
+        self.dx = 10 + random.randint(-4, 4)
 
     def right_paddle_bounce(self):
         self.move_speed *= 0.95
-        self.dx = -10 + random.randint(-5, 5)
+        self.dx = -10 + random.randint(-4, 4)
 
     def refresh(self):
         self.goto(0, 0)
