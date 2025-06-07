@@ -57,12 +57,12 @@ while game_is_on:
         ball.right_paddle_bounce()
 
     # check if right paddle missed ball
-    elif ball.xcor() > 380:
+    elif ball.xcor() > 360:
         scoreboard.l_point()
         ball.refresh()
 
     # check if left paddle missed ball
-    elif ball.xcor() < -380:
+    elif ball.xcor() < -360:
         scoreboard.r_point()
         ball.refresh()
 

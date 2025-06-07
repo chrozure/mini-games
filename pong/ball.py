@@ -41,5 +41,10 @@ class Ball(Turtle):
     def refresh(self):
         self.goto(0, 0)
         self.move_speed = START_MOVE_SPEED
-        self.dx *= -1
+
+        # swap direction
+        if self.dx < 0:
+            self.dx = 10 + random.randint(-2, 2)
+        else:
+            self.dx = -10 + random.randint(-2, 2)
 
