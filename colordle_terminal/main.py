@@ -1,5 +1,6 @@
 import random
 from human_player import HumanPlayer
+from simple_bot import SimpleBot
 
 
 def main():
@@ -24,11 +25,12 @@ def main():
     correct_answer = tuple(possible_numbers)
 
     human = HumanPlayer()
+    bot = SimpleBot()
     num_guesses = 0
-    bot_guesses = []
 
     game_still_running = True
     while game_still_running:
+        num_guesses += 1
 
         # get human guess
         guess = human.guess(num_slots)
@@ -49,35 +51,27 @@ def main():
             if guess[i] == correct_answer[i]:
                 total_matching += 1
 
-        num_guesses += 1
         human.process_result(total_matching)
         if total_matching == num_slots:
-            print("\nCongratulations! You win.")
+            print("Congratulations! You win.")
             print(f"The correct answer was {correct_answer}")
             print(f"You won in {num_guesses} guesses.")
             return
 
         # construct bot guess
-        # while True:
-        #     random.shuffle(possible_numbers)
-        #     bot_guess = tuple(possible_numbers)
-        #
-        #     if bot_guess not in bot_guesses:
-        #         break
-        #
-        # bot_guesses.append(bot_guess)
-        # bot_total_matching = 0
-        # for i in range(len(bot_guess)):
-        #     if bot_guess[i] == correct_answer[i]:
-        #         bot_total_matching += 1
-        #
-        # print(f"The bot guessed {bot_guess}")
-        # print(f"The bot got {bot_total_matching} positions correct")
-        # if bot_total_matching == num_slots:
-        #     print("The bot wins!")
-        #     print(f"The correct answer was {correct_answer}")
-        #     print(f"The bot took {len(bot_guesses)} guesses.")
-        #     return
+        bot_guess = bot.guess(num_slots)
+
+        bot_total_matching = 0
+        for i in range(len(bot_guess)):
+            if bot_guess[i] == correct_answer[i]:
+                bot_total_matching += 1
+
+        bot.process_result(bot_total_matching)
+        if bot_total_matching == num_slots:
+            print("The bot wins!")
+            print(f"The correct answer was {correct_answer}")
+            print(f"The bot took {num_guesses} guesses.")
+            return
 
 
 if __name__ == "__main__":

@@ -17,4 +17,4 @@ class HumanPlayer(Player):
 
     def process_result(self, result: int) -> None:
         name = "You" if self.name == "" else self.name
-        print(f"{name} got {result} correct positions!")
+        print(f"{name} got {result} correct positions!\n")

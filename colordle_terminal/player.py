@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 
 class Player(ABC):
     @abstractmethod
-    def guess(self, num_slots: int) -> tuple[int]:
+    def guess(self, num_slots: int) -> tuple[int, ...]:
         pass
 
     @abstractmethod
