@@ -4,6 +4,9 @@ from simple_bot import SimpleBot
 
 
 def main():
+    human = HumanPlayer()
+    bot = SimpleBot("Bot 1")
+
     num_slots = int(input("Enter number of slots (3 - 7): "))
     if num_slots <= 0:
         print(f"You can't guess {num_slots} numbers...")
@@ -24,8 +27,6 @@ def main():
     random.shuffle(possible_numbers)
     correct_answer = tuple(possible_numbers)
 
-    human = HumanPlayer()
-    bot = SimpleBot()
     num_guesses = 0
 
     game_still_running = True

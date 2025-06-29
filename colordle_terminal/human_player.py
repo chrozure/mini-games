@@ -3,10 +3,14 @@ from player import Player
 
 class HumanPlayer(Player):
     def __init__(self, name: str = ""):
-        self.name = name
+        self._name = name
+
+    @property
+    def name(self) -> str:
+        return self._name
 
     def guess(self, num_slots) -> tuple[int, ...]:
-        name = "Your" if self.name == "" else f"{self.name}'s"
+        name = "Your" if self._name == "" else f"{self._name}'s"
 
         while True:
             guess = input(f"{name} turn! Guess a permutation of 1-{num_slots}: ").split()
@@ -16,5 +20,5 @@ class HumanPlayer(Player):
             print(f"Please enter exactly {num_slots} positive integers (space-separated).")
 
     def process_result(self, result: int) -> None:
-        name = "You" if self.name == "" else self.name
+        name = "You" if self._name == "" else self._name
         print(f"{name} got {result} correct positions!\n")
