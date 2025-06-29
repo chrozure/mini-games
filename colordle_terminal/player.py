@@ -7,6 +7,12 @@ from abc import ABC, abstractmethod
 
 
 class Player(ABC):
+
+    @property
+    @abstractmethod
+    def name(self):
+        pass
+
     @abstractmethod
     def guess(self, num_slots: int) -> tuple[int, ...]:
         pass
