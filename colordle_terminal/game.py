@@ -16,7 +16,7 @@ class Game:
         self._players = players
         self._is_easy_mode = False
         self._num_slots = 5
-        self._correct_answer = ()
+        self._correct_answer = (1, 2, 3, 4, 5)
 
     def initialize(self) -> None:
         # Select difficulty
@@ -37,7 +37,7 @@ class Game:
                 self._num_slots = num_slots
                 break
 
-        print("Generating correct answer...")
+        print("Generating answer...")
         possible_numbers = list(range(1, num_slots + 1))
         random.shuffle(possible_numbers)
         self._correct_answer = tuple(possible_numbers)
@@ -65,7 +65,7 @@ class Game:
             player.process_result(total_matching)
 
             if total_matching == self._num_slots:
-                print(f"Congratulations! {player.name} wins.")
+                print(f"Congratulations, {player.name} won!")
                 print(f"The correct answer was {self._correct_answer}.")
                 print(f"{player.name} won in {self.round_number} guesses.")
                 self.is_running = False
