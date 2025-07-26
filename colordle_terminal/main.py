@@ -9,7 +9,7 @@ def main():
     game = Game(players)
 
     game.initialize()
-    while game.is_running:
+    while game.is_running():
         game.play_round()
 
 

@@ -18,5 +18,5 @@ class Player(ABC):
         pass
 
     @abstractmethod
-    def process_result(self, result: int) -> None:
+    def process_result(self, guess: tuple[int, ...], result: int) -> None:
         pass

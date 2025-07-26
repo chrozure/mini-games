@@ -19,6 +19,6 @@ class HumanPlayer(Player):
 
             print(f"Please enter exactly {num_slots} positive integers (space-separated).")
 
-    def process_result(self, result: int) -> None:
-        name = "You" if self._name == "" else self._name
-        print(f"{name} got {result} correct positions!\n")
+    def process_result(self, guess: tuple[int, ...], result: int) -> None:
+        # The human player processes the result in their brain!
+        pass

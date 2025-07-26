@@ -19,9 +19,7 @@ class SimpleBot(Player):
             guess = tuple(possible_numbers)
 
             if guess not in self._past_guesses:
-                print(f"{self._name} guessed {guess}")
-                self._past_guesses.append(guess)
                 return guess
 
-    def process_result(self, result: int) -> None:
-        print(f"{self._name} got {result} positions correct.\n")
+    def process_result(self, guess: tuple[int, ...], result: int) -> None:
+        self._past_guesses.append(guess)

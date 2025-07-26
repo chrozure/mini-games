@@ -10,11 +10,11 @@ from player import Player
 
 class Game:
     def __init__(self,  players: list[Player]):
-        self.is_running = True
         self.round_number = 0
 
         self._players = players
         self._is_easy_mode = False
+        self._is_running = True
         self._num_slots = 5
         self._correct_answer = (1, 2, 3, 4, 5)
 
@@ -42,6 +42,9 @@ class Game:
         random.shuffle(possible_numbers)
         self._correct_answer = tuple(possible_numbers)
 
+    def is_running(self):
+        return self._is_running
+
     def play_round(self):
         self.round_number += 1
         print("--------------------------------------")
@@ -62,13 +65,16 @@ class Game:
                     continue
 
             total_matching = self.calculate_score(guess)
-            player.process_result(total_matching)
+            positions = "position" if total_matching == 1 else "positions"
+            print(f"{player.name} guessed {guess} and got {total_matching} {positions} correct.")
+            player.process_result(guess, total_matching)
 
             if total_matching == self._num_slots:
-                print(f"Congratulations, {player.name} won!")
+                print("--------------------------------------")
+                print(f"{player.name} won!")
                 print(f"The correct answer was {self._correct_answer}.")
                 print(f"{player.name} won in {self.round_number} guesses.")
-                self.is_running = False
+                self._is_running = False
                 return
 
     def calculate_score(self, guess: tuple[int, ...]) -> int:
